@@ -1,6 +1,6 @@
 # SecureSearchXplorer
 
-SecureSearchXplorer is a revolutionary Java web application designed to redefine the searching experience within a secure environment. Leveraging advanced security protocols and user-friendly interfaces, SecureSearchXplorer empowers users to explore and discover information with confidence and ease.
+SecureSearchXplorer is a Java web app that makes searching databases easy and safe. It helps users find information with confidence and simplicity in a secure environment.
 
 
 ## Key Features
