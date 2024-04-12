@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>User Search</title>
+        <style>
+            body {
+                font-family: Arial, sans-serif;
+                margin: 0;
+                padding: 0;
+                background-color: #f4f4f4;
+            }
+
+            header {
+                background-color: #333;
+                color: #fff;
+                padding: 10px;
+                text-align: center;
+            }
+
+            nav {
+                background-color: #444;
+                padding: 10px;
+                text-align: center;
+            }
+
+            nav a {
+                color: #fff;
+                text-decoration: none;
+                padding: 10px;
+                margin: 0 10px;
+                font-weight: bold;
+            }
+
+            section {
+                padding: 20px;
+                text-align: center;
+            }
+
+            footer {
+                background-color: #333;
+                color: #fff;
+                padding: 10px;
+                text-align: center;
+            }
+
+            /* Search Form Styles */
+            .search-container {
+                max-width: 400px;
+                margin: 0 auto;
+                background: #fff;
+                padding: 20px;
+                border-radius: 5px;
+                box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            }
+
+            .search-container label {
+                display: block;
+                margin-bottom: 8px;
+            }
+
+            .search-container input {
+                width: 100%;
+                padding: 10px;
+                margin-bottom: 15px;
+                border: 1px solid #ccc;
+                border-radius: 4px;
+                box-sizing: border-box;
+            }
+
+            .search-container button {
+                background-color: #333;
+                color: #fff;
+                padding: 10px 15px;
+                border: none;
+                border-radius: 4px;
+                cursor: pointer;
+            }
+
+            .search-container select {
+                width: 100%;
+                padding: 10px;
+                margin-bottom: 15px;
+                border: 1px solid #ccc;
+                border-radius: 4px;
+                box-sizing: border-box;
+            }
+            .get-user-fields,
+            .get-all-users-fields {
+                display: none;
+            }
+        </style>
+    </head>
+    <body>
+
+        <header>
+            <h1>User Search</h1>
+        </header>
+
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="logServlet">Login</a>
+            <a href="registServlet">New User</a>
+            <a href="search.html">Search</a>
+        </nav>
+
+        <section>
+            <div class="search-container">
+                <h2>Search for Users</h2>
+                <form id="searchForm" method="Get">
+                    <label for="searchType">Search Type:</label>
+                    <select id="searchType" name="searchType" onchange="changeAction()">
+                        <option value="getUser">Get User</option>
+                        <option value="getAllUsers">Get All Users</option>
+                    </select>
+
+                    <!-- Fields for 'Get User' -->
+                    <div class="get-user-fields">
+                        <label for="username">Enter User Name:</label>
+                        <input type="text" id="username" name="username" required>
+                    </div>
+
+                    <!-- Fields for 'Get All Users' -->
+                    <div class="get-all-users-fields">
+                        <!-- Add any additional fields specific to 'Get All Users' here -->
+                    </div>
+
+                    <button type="submit">Search</button>
+                </form>
+            </div>
+        </section>
+
+        <footer>
+            <p>&copy; 2024 User Search. All rights reserved.</p>
+        </footer>
+
+        <script>
+            function changeAction() {
+                var searchType = document.getElementById('searchType').value;
+                var form = document.getElementById('searchForm');
+
+                // Reset form action
+                form.action = '';
+
+                // Show/hide fields based on the selected option
+                var getUserFields = document.querySelector('.get-user-fields');
+                var getAllUsersFields = document.querySelector('.get-all-users-fields');
+
+                if (searchType === 'getUser') {
+                    form.action = 'getUser'; // Set the appropriate action for 'Get User'
+                    getUserFields.style.display = 'block';
+                    getAllUsersFields.style.display = 'none';
+                } else if (searchType === 'getAllUsers') {
+                    form.action = 'getAllUsers'; // Set the appropriate action for 'Get All Users'
+                    getUserFields.style.display = 'none';
+                    getAllUsersFields.style.display = 'block';
+                }
+            }
+
+        </script>
+
+    </body>
+</html>
